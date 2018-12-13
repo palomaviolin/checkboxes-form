@@ -2,6 +2,7 @@
 
 let skillsList = document.querySelector('#container-checkboxes');
 console.log(skillsList);
+let skillsCard = document.querySelector('#container-checkboxes-card');
 
 function init () {
   fetch('https://raw.githubusercontent.com/Adalab/dorcas-s2-proyecto-data/master/skills.json')
@@ -33,7 +34,27 @@ function init () {
           // Finalmente, añadimos el <li> a la lista
           skillsList.appendChild(listItemElem);
           }
+      
+      // Print de las skills en la CARD
+      for (let i = 0; i < skillsArr.length; i++) {
+        // Objeto de skill
+        let currentSkill = skillsArr[i];
+        console.log(currentSkill);
+
+        // Creamos un elemento <li> 
+        let listItemElem = document.createElement('li');
+        listItemElem.style = `list-style-type: none; background-color: pink; width: 80px; border-radius: 4px; margin: 2px; display: inline-block;`; // Para quitar el punto de cada 'li' que sale por defecto.
+  
+        // Añadimos el nombre de la skill como texto hijo del <li>
+        let listItemContent = document.createTextNode(`${currentSkill}`);
+        listItemElem.appendChild(listItemContent);
+
+        // Finalmente, añadimos el <li> a la lista
+        skillsList.appendChild(listItemElem);
+        }
 })
 }
 
 init();
+
+
